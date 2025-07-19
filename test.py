@@ -1,32 +1,24 @@
-print("Welcome to python Pizza Deliveries!!")
-size = input("What your Pizza size do you want? S, M,L: ")
-st=''
-if size == 'S':
-    st ='Add pepperoni for small Pizza? Y or N: '
-elif size == 'M':
-    st = 'Add pepperoni for medium Pizza? Y or N: '
-else:
-    st = 'Add pepperoni for large Pizza? Y or N: '
-pepperoni = input(st)
+import random
 
-extra_chees = input("Do you want to extra chees? Y or N: ")
+print("Password generator:")
+uppercaseChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+lowercaseChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+upAndLow = uppercaseChars+lowercaseChars
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '[', ']', '{', '}', '|', '/\\/', ':', ';', '"', "'", '<', '>', ',', '.', '?', '/', '~', '`']
 
-calculate = 0
-if size =='S':
-    calculate= calculate+15
-elif size == 'M':
-    calculate = calculate + 20
-else:
-    calculate = calculate + 25
-
-
-if pepperoni == 'Y' and size == 'S':
-    calculate = calculate+2
-elif pepperoni == 'Y' and size == 'M':
-    calculate = calculate+3
-elif pepperoni == 'Y' and size == 'L':
-    calculate = calculate + 4
-
-if extra_chees == 'Y':
-    calculate+=1
-print('Your final bill is '+str(calculate))
+enterCh = int(input("Enter number of character in your password:\n"))
+enterNum = int(input("Enter number of number in your password:\n"))
+EnterSpecialCh = int(input("Enter number of special character in  your password:\n"))
+passwordList = []
+for ch in range(0, enterCh+1):
+    passwordList.append(random.choice(upAndLow))
+for ch in range(0, enterNum+1):
+    passwordList.append(str(random.choice(numbers)))
+for ch in range(0, EnterSpecialCh+1):
+    passwordList.append(random.choice(specialChars))
+random.shuffle(passwordList)
+password = ''
+for st in passwordList:
+    password = password+st
+print(password)
